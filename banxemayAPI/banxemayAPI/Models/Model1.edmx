@@ -1,0 +1,222 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="banxemayModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="hangxe">
+          <Key>
+            <PropertyRef Name="mahang" />
+          </Key>
+          <Property Name="mahang" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="tenhang" Type="nvarchar" MaxLength="50" />
+          <Property Name="mota" Type="nvarchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="loaixe">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="tenloai" Type="nvarchar" MaxLength="50" />
+          <Property Name="mota" Type="nvarchar" MaxLength="100" />
+        </EntityType>
+        <EntityType Name="xe">
+          <Key>
+            <PropertyRef Name="maxe" />
+          </Key>
+          <Property Name="maxe" Type="char" MaxLength="10" Nullable="false" />
+          <Property Name="tenxe" Type="nvarchar" MaxLength="50" />
+          <Property Name="mahang" Type="char" MaxLength="10" />
+          <Property Name="maloai" Type="char" MaxLength="10" />
+          <Property Name="mausac" Type="nvarchar" MaxLength="50" />
+          <Property Name="cannang" Type="nvarchar" MaxLength="50" />
+          <Property Name="docaoyen" Type="nvarchar" MaxLength="50" />
+          <Property Name="namsanxuat" Type="varchar" MaxLength="50" />
+          <Property Name="xuatxu" Type="nvarchar" MaxLength="50" />
+          <Property Name="dungtichbinhxang" Type="nvarchar" MaxLength="50" />
+          <Property Name="dungtichxilanh" Type="nvarchar" MaxLength="50" />
+          <Property Name="giaban" Type="int" />
+        </EntityType>
+        <Association Name="FK__xe__mahang__3E52440B">
+          <End Role="hangxe" Type="Self.hangxe" Multiplicity="0..1" />
+          <End Role="xe" Type="Self.xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hangxe">
+              <PropertyRef Name="mahang" />
+            </Principal>
+            <Dependent Role="xe">
+              <PropertyRef Name="mahang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__xe__maloai__3D5E1FD2">
+          <End Role="loaixe" Type="Self.loaixe" Multiplicity="0..1" />
+          <End Role="xe" Type="Self.xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaixe">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="xe">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="banxemayModelStoreContainer">
+          <EntitySet Name="hangxe" EntityType="Self.hangxe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loaixe" EntityType="Self.loaixe" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="xe" EntityType="Self.xe" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__xe__mahang__3E52440B" Association="Self.FK__xe__mahang__3E52440B">
+            <End Role="hangxe" EntitySet="hangxe" />
+            <End Role="xe" EntitySet="xe" />
+          </AssociationSet>
+          <AssociationSet Name="FK__xe__maloai__3D5E1FD2" Association="Self.FK__xe__maloai__3D5E1FD2">
+            <End Role="loaixe" EntitySet="loaixe" />
+            <End Role="xe" EntitySet="xe" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="banxemayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="hangxe">
+          <Key>
+            <PropertyRef Name="mahang" />
+          </Key>
+          <Property Name="mahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tenhang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="xes" Relationship="Self.FK__xe__mahang__3E52440B" FromRole="hangxe" ToRole="xe" />
+        </EntityType>
+        <EntityType Name="loaixe">
+          <Key>
+            <PropertyRef Name="maloai" />
+          </Key>
+          <Property Name="maloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="xes" Relationship="Self.FK__xe__maloai__3D5E1FD2" FromRole="loaixe" ToRole="xe" />
+        </EntityType>
+        <EntityType Name="xe">
+          <Key>
+            <PropertyRef Name="maxe" />
+          </Key>
+          <Property Name="maxe" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+          <Property Name="tenxe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="mahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="maloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+          <Property Name="mausac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="cannang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="docaoyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="namsanxuat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="xuatxu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dungtichbinhxang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="dungtichxilanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+          <Property Name="giaban" Type="Int32" />
+          <NavigationProperty Name="hangxe" Relationship="Self.FK__xe__mahang__3E52440B" FromRole="xe" ToRole="hangxe" />
+          <NavigationProperty Name="loaixe" Relationship="Self.FK__xe__maloai__3D5E1FD2" FromRole="xe" ToRole="loaixe" />
+        </EntityType>
+        <Association Name="FK__xe__mahang__3E52440B">
+          <End Role="hangxe" Type="Self.hangxe" Multiplicity="0..1" />
+          <End Role="xe" Type="Self.xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="hangxe">
+              <PropertyRef Name="mahang" />
+            </Principal>
+            <Dependent Role="xe">
+              <PropertyRef Name="mahang" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__xe__maloai__3D5E1FD2">
+          <End Role="loaixe" Type="Self.loaixe" Multiplicity="0..1" />
+          <End Role="xe" Type="Self.xe" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loaixe">
+              <PropertyRef Name="maloai" />
+            </Principal>
+            <Dependent Role="xe">
+              <PropertyRef Name="maloai" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="banxemayEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="hangxes" EntityType="Self.hangxe" />
+          <EntitySet Name="loaixes" EntityType="Self.loaixe" />
+          <EntitySet Name="xes" EntityType="Self.xe" />
+          <AssociationSet Name="FK__xe__mahang__3E52440B" Association="Self.FK__xe__mahang__3E52440B">
+            <End Role="hangxe" EntitySet="hangxes" />
+            <End Role="xe" EntitySet="xes" />
+          </AssociationSet>
+          <AssociationSet Name="FK__xe__maloai__3D5E1FD2" Association="Self.FK__xe__maloai__3D5E1FD2">
+            <End Role="loaixe" EntitySet="loaixes" />
+            <End Role="xe" EntitySet="xes" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="banxemayModelStoreContainer" CdmEntityContainer="banxemayEntities">
+          <EntitySetMapping Name="hangxes">
+            <EntityTypeMapping TypeName="banxemayModel.hangxe">
+              <MappingFragment StoreEntitySet="hangxe">
+                <ScalarProperty Name="mahang" ColumnName="mahang" />
+                <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loaixes">
+            <EntityTypeMapping TypeName="banxemayModel.loaixe">
+              <MappingFragment StoreEntitySet="loaixe">
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+                <ScalarProperty Name="mota" ColumnName="mota" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="xes">
+            <EntityTypeMapping TypeName="banxemayModel.xe">
+              <MappingFragment StoreEntitySet="xe">
+                <ScalarProperty Name="maxe" ColumnName="maxe" />
+                <ScalarProperty Name="tenxe" ColumnName="tenxe" />
+                <ScalarProperty Name="mahang" ColumnName="mahang" />
+                <ScalarProperty Name="maloai" ColumnName="maloai" />
+                <ScalarProperty Name="mausac" ColumnName="mausac" />
+                <ScalarProperty Name="cannang" ColumnName="cannang" />
+                <ScalarProperty Name="docaoyen" ColumnName="docaoyen" />
+                <ScalarProperty Name="namsanxuat" ColumnName="namsanxuat" />
+                <ScalarProperty Name="xuatxu" ColumnName="xuatxu" />
+                <ScalarProperty Name="dungtichbinhxang" ColumnName="dungtichbinhxang" />
+                <ScalarProperty Name="dungtichxilanh" ColumnName="dungtichxilanh" />
+                <ScalarProperty Name="giaban" ColumnName="giaban" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

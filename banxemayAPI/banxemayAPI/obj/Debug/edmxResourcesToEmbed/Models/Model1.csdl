@@ -1,0 +1,77 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="banxemayModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="hangxe">
+    <Key>
+      <PropertyRef Name="mahang" />
+    </Key>
+    <Property Name="mahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tenhang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="xes" Relationship="Self.FK__xe__mahang__3E52440B" FromRole="hangxe" ToRole="xe" />
+  </EntityType>
+  <EntityType Name="loaixe">
+    <Key>
+      <PropertyRef Name="maloai" />
+    </Key>
+    <Property Name="maloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tenloai" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mota" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="xes" Relationship="Self.FK__xe__maloai__3D5E1FD2" FromRole="loaixe" ToRole="xe" />
+  </EntityType>
+  <EntityType Name="xe">
+    <Key>
+      <PropertyRef Name="maxe" />
+    </Key>
+    <Property Name="maxe" Type="String" MaxLength="10" FixedLength="true" Unicode="false" Nullable="false" />
+    <Property Name="tenxe" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="mahang" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="maloai" Type="String" MaxLength="10" FixedLength="true" Unicode="false" />
+    <Property Name="mausac" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="cannang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="docaoyen" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="namsanxuat" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+    <Property Name="xuatxu" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dungtichbinhxang" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="dungtichxilanh" Type="String" MaxLength="50" FixedLength="false" Unicode="true" />
+    <Property Name="giaban" Type="Int32" />
+    <NavigationProperty Name="hangxe" Relationship="Self.FK__xe__mahang__3E52440B" FromRole="xe" ToRole="hangxe" />
+    <NavigationProperty Name="loaixe" Relationship="Self.FK__xe__maloai__3D5E1FD2" FromRole="xe" ToRole="loaixe" />
+  </EntityType>
+  <Association Name="FK__xe__mahang__3E52440B">
+    <End Role="hangxe" Type="Self.hangxe" Multiplicity="0..1" />
+    <End Role="xe" Type="Self.xe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="hangxe">
+        <PropertyRef Name="mahang" />
+      </Principal>
+      <Dependent Role="xe">
+        <PropertyRef Name="mahang" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="FK__xe__maloai__3D5E1FD2">
+    <End Role="loaixe" Type="Self.loaixe" Multiplicity="0..1" />
+    <End Role="xe" Type="Self.xe" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="loaixe">
+        <PropertyRef Name="maloai" />
+      </Principal>
+      <Dependent Role="xe">
+        <PropertyRef Name="maloai" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityContainer Name="banxemayEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="hangxes" EntityType="Self.hangxe" />
+    <EntitySet Name="loaixes" EntityType="Self.loaixe" />
+    <EntitySet Name="xes" EntityType="Self.xe" />
+    <AssociationSet Name="FK__xe__mahang__3E52440B" Association="Self.FK__xe__mahang__3E52440B">
+      <End Role="hangxe" EntitySet="hangxes" />
+      <End Role="xe" EntitySet="xes" />
+    </AssociationSet>
+    <AssociationSet Name="FK__xe__maloai__3D5E1FD2" Association="Self.FK__xe__maloai__3D5E1FD2">
+      <End Role="loaixe" EntitySet="loaixes" />
+      <End Role="xe" EntitySet="xes" />
+    </AssociationSet>
+  </EntityContainer>
+</Schema>

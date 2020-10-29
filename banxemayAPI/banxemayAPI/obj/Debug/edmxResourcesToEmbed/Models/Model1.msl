@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="banxemayModelStoreContainer" CdmEntityContainer="banxemayEntities">
+    <EntitySetMapping Name="hangxes">
+      <EntityTypeMapping TypeName="banxemayModel.hangxe">
+        <MappingFragment StoreEntitySet="hangxe">
+          <ScalarProperty Name="mahang" ColumnName="mahang" />
+          <ScalarProperty Name="tenhang" ColumnName="tenhang" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loaixes">
+      <EntityTypeMapping TypeName="banxemayModel.loaixe">
+        <MappingFragment StoreEntitySet="loaixe">
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+          <ScalarProperty Name="tenloai" ColumnName="tenloai" />
+          <ScalarProperty Name="mota" ColumnName="mota" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="xes">
+      <EntityTypeMapping TypeName="banxemayModel.xe">
+        <MappingFragment StoreEntitySet="xe">
+          <ScalarProperty Name="maxe" ColumnName="maxe" />
+          <ScalarProperty Name="tenxe" ColumnName="tenxe" />
+          <ScalarProperty Name="mahang" ColumnName="mahang" />
+          <ScalarProperty Name="maloai" ColumnName="maloai" />
+          <ScalarProperty Name="mausac" ColumnName="mausac" />
+          <ScalarProperty Name="cannang" ColumnName="cannang" />
+          <ScalarProperty Name="docaoyen" ColumnName="docaoyen" />
+          <ScalarProperty Name="namsanxuat" ColumnName="namsanxuat" />
+          <ScalarProperty Name="xuatxu" ColumnName="xuatxu" />
+          <ScalarProperty Name="dungtichbinhxang" ColumnName="dungtichbinhxang" />
+          <ScalarProperty Name="dungtichxilanh" ColumnName="dungtichxilanh" />
+          <ScalarProperty Name="giaban" ColumnName="giaban" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>
